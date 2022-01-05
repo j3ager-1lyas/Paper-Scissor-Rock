@@ -1,6 +1,6 @@
-// this function is to create the playing computer //
 let playerSelection="";
 let computerwins=playerwins=0;
+// creating the playing computer //
 function computerPlay() {
     let computerchoice=Math.floor(Math.random()*3);
     if (computerchoice == 2) {
@@ -12,7 +12,7 @@ function computerPlay() {
         return "paper";
     }
 }
-
+// doing one round of the game and register,show the winner//
 function Playround(player1=playerSelection,player2=computerPlay()) {
     if (player1 == "rock" && player2 == "scissor" || player1 == "scissor" && player2 == "paper" || player1=="paper" && player2=="rock") {
         playerwins++;
@@ -27,7 +27,8 @@ function Playround(player1=playerSelection,player2=computerPlay()) {
         
     }
 }
-function game() {//this function starts the game//
+//make from the game a total of 5 rounds.//
+function game() {
     playerwins=computerwins=0;//initialize playerswinnableround every new game.//
     for(i=1;i<=5;i++){
         playerSelection=(prompt('Rounds left '+(5-i),'Enter your choice,rock,scissor or paper')).toLowerCase();

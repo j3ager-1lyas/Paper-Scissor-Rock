@@ -1,0 +1,29 @@
+body {
+    display:flex;
+    
+}
+* {
+    box-sizing: border-box;
+}
+img {
+    width: 100px;
+    height:auto;
+}
+/*Layout1 Section*/
+.layout1,.layout2,.layout3 {
+width: 33.3%;
+display:flex;
+flex-direction: column;
+}
+.playerChoice {
+    display:flex;
+    justify-content: space-around;
+}
+
+/*Layout 2 Section*/
+.displayBoard {
+    display:flex;
+    justify-content: space-around;
+}
+
+/*Layout 3 Section*/

@@ -38,5 +38,3 @@ function Winner() {
     else { return "its a tie Round Computer= "+computerwins+"Player= "+playerwins;}
     
 }
-
-

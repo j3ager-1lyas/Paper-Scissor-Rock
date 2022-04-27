@@ -1,29 +1,113 @@
+body,html {
+    height:100%;
+    margin:0;
+}
+/*page sections size */
 body {
+  display:flex;
+  flex-direction: column;
+}
+#head{ 
+    height:20%;
+    flex: 2,1,auto;
     display:flex;
+    /* to align title */
+    justify-content: center;
+    align-items: center;
+}
+#body{
+    height:70%;
+    flex: 7,1,auto;
     
+    display:flex;
+    flex-direction:column;
+    padding-left: 25px;
+    padding-right:25px;
+    padding-top:20px;
+    padding-bottom: 20px;
 }
-* {
-    box-sizing: border-box;
+#foot {
+    height:10%;
+    flex: 1,1,auto;
 }
-img {
-    width: 100px;
-    height:auto;
-}
-/*Layout1 Section*/
-.layout1,.layout2,.layout3 {
-width: 33.3%;
-display:flex;
-flex-direction: column;
-}
-.playerChoice {
+/*-body elements */
+#players {
+    /*margin-top:20px;
+    margin-left:25px;
+    margin-right:25px;*/
+    /*align playerName &computer*/
     display:flex;
     justify-content: space-around;
+    align-items: center;
 }
-
-/*Layout 2 Section*/
-.displayBoard {
+/*-- screen elements*/
+#screen {
+   /* margin-bottom: 20px;
+    margin-left:25px;
+    margin-right:25px;*/
+    padding:10px;
     display:flex;
     justify-content: space-around;
+    align-items: stretch;
 }
+.layout1,.layout2,.layout3{
+    width:33.3%;
+    padding:5px;
+    display:flex;
+    flex:1,1,auto;
+}
+/*---layout1*/
+.layout1{
+    justify-content: space-around;
+}
+#choices {
+    padding:5px;
+    display:flex;
+    flex-direction: column;
+}
+#rock,#paper,#scissor{ /*img*/
+    border-radius: 50%;
+    width: 90px;
+    height:90px;
+}
+#playerChoice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pChoiceimg,#cChoiceimg{ /*img*/
+    width:150px ;
+    height:153px;/*not auto cause imgs are diff size*/
+    border-radius: 10%;
+}
+/*--layout2*/
+.layout2{
+    flex-direction: column;
+    justify-content: space-around;
+}
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#scoreBoard {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#feedback{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#feedbacktext{
+    text-align: center;
+}
+/*--layout3*/
+.layout3 {
+    justify-content: center;
+    align-items: center;
+}/* computer choice 
+img (#cChoiceimg)is in line 78*/
 
-/*Layout 3 Section*/

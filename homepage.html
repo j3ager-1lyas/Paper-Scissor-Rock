@@ -7,57 +7,53 @@
     </head>
 
     <body>
-        <div class="layout1">bruh
-            <div id="playerName">
-                playername
+        <div id="head">
+            <h1>Rock Paper Scissor</h1>
+        </div>
+        <div id="body">
+            <div id="players">
+                <div id="playerName">You</div>
+                <div id="computer">Computer AI</div>
             </div>
-            <div class="playerChoice">
-                <div class="choices">
-                    <div id="rock">
-                        <img src="./images/Rock.png">
+            <div id="screen">
+                <div class="layout1">
+                    <div id="choices">
+                        <div class="choice"><img id="rock" src="./images/Rock.png"></div>
+                        <div class="choice"><img id="paper" src="./images/images.png"></div>
+                        <div class="choice"><img id="scissor" src="./images/Scissor.png"></div>
                     </div>
-                    <div id="paper">
-                        <img src="./images/images.png">
-                    </div>
-                    <div id="scissor">
-                        <img src="./images/Scissor.png">
+                    <div id="playerChoice">
+                        <img id="pChoiceimg" src="">
                     </div>
                 </div>
-                <div id="selectedChoice">
-                    <img src="images/images.png">
+                <div class="layout2">
+                    <div class="results"id="round">
+                        <p>Round</p>
+                        <div id="roundNumber"></div>
+                    </div>
+                    <div id="scoreBoard">
+                        <div class="results">
+                            <p>Player Score</p>
+                            <div id="playerScore">0</div>
+                        </div>
+                        <div class="results">
+                            <p>Computer Score</p>
+                            <div id="computerScore">0</div>
+                        </div>
+                    </div>
+                    <div id="feedback">
+                        <div id="feedbacktext"></div>
+                    </div>
+                </div>
+                <div class="layout3">
+                    <img id="cChoiceimg" src="./images/Scissor.png">
                 </div>
             </div>
         </div>
-        <div class="layout2">
-            <h1 id="title">
-                Rock Paper Scissor Game
-            </h1>
-            <div class="displayBoard">
-                <div id="playerScore">
-                    score
-                </div>
-                <div id="round">
-                round
-                </div>
-                <div id="computerScore">
-                score
-                </div>
-            </div>
-            <div class="Result Board">
-                You have won this Round
-            </div>
-        </div>
-        <div class="layout3">bruh
-            <div id="computerName">
-                The Computer
-            </div>
-            <div id="randomChoice">
-                <img src="./images/Rock.png">
-            </div>
-        </div>
-
+        <div id="foot"></div>
+        
     </body>
-    <script type="text/javascript" src="./javascript1.js">
+    <script type="text/javascript" src="./javascript.js">
         alert("This alert box was called with the onload event");
       </script>
 </html>

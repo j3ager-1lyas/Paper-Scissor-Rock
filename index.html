@@ -1,19 +1,61 @@
 <!DOCTYPE html>
-<html>
+ <html>
     <head>
         <title>Jan-Ken-Pon</title>
         <meta charset="UTF-8" lang="English">
+
+        <link rel="stylesheet" href="rpsstyle.css">
     </head>
 
     <body>
-        <h1>Welcome to Rock Paper Scissor Game.</h1>
-        <div>Shall we really trust you with the Faith of Humanity against those smart Computers</div>
-        <button id="paper">Paper</button> 
-        <button id="scissor">Scissor</button>
-        <button id="rock">Rock</button> 
-        <div id="resultoutput"></div>
+        <div id="head">
+            <h1>Rock Paper Scissor</h1>
+        </div>
+        <div id="body">
+            <div id="players">
+                <div id="playerName">You</div>
+                <div id="computer">Computer AI</div>
+            </div>
+            <div id="screen">
+                <div class="layout1">
+                    <div id="choices">
+                        <div class="choice"><img id="rock" src="./images/Rock.png"></div>
+                        <div class="choice"><img id="paper" src="./images/images.png"></div>
+                        <div class="choice"><img id="scissor" src="./images/Scissor.png"></div>
+                    </div>
+                    <div id="playerChoice">
+                        <img id="pChoiceimg" src="">
+                    </div>
+                </div>
+                <div class="layout2">
+                    <div class="results"id="round">
+                        <p>Round</p>
+                        <div id="roundNumber"></div>
+                    </div>
+                    <div id="scoreBoard">
+                        <div class="results">
+                            <p>Player Score</p>
+                            <div id="playerScore">0</div>
+                        </div>
+                        <div class="results">
+                            <p>Computer Score</p>
+                            <div id="computerScore">0</div>
+                        </div>
+                    </div>
+                    <div id="feedback">
+                        <div id="feedbacktext"></div>
+                    </div>
+                </div>
+                <div class="layout3">
+                    <img id="cChoiceimg" src="./images/Scissor.png">
+                </div>
+            </div>
+        </div>
+        <div id="foot"></div>
+        
     </body>
-    <script type="text/javascript" src="./javascript1.js">
-            alert("This alert box was called with the onload event");
-          </script>
+    <script type="text/javascript" src="./javascript.js">
+        alert("This alert box was called with the onload event");
+      </script>
 </html>
+

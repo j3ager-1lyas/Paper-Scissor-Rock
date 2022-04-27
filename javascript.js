@@ -1,52 +1,76 @@
-let playerSelection="";
-let computerwins=playerwins=0;
-// creating the playing computer //
-function computerPlay() {
-    let computerchoice=Math.floor(Math.random()*3);
-    if (computerchoice == 2) {
-        return "rock";
-    } else if (computerchoice == 1) {
-        return "scissor";
+/*getting info about what did player choose */
+let choices=document.querySelectorAll('.choice');
+choices.forEach((choice)=>{
+    choice.addEventListener('click',(e)=>{game(e);updateScreen(e)})
+                            })
+let pSChoice="";
+let cSChoice="";
+let playerScore=0;
+let computerScore=0;
+let round=0;
+let result="";
+let finalResult="";
+function initialisation(){
+    computerScore=0;
+    playerScore=0;
+    round=0;
+    finalResult="";
+}
+function computerChoice() {
+    let random = Math.floor(Math.random()*30/10)/**idk but *30/10 worked 
+    gave better randomness than *3 */
+    if(random==0){ return "rock"}
+    else if(random==1){ return "paper"}
+    else { return "scissor"}
+}
+function game(e){
+    if(round==5){initialisation()}
+    pSChoice=e.target.id;
+    cSChoice=computerChoice();
+    if(cSChoice===pSChoice){ result="It is a tie , ouff!!"}
+    else if(cSChoice==="scissor" && pSChoice==="paper"|| cSChoice==="paper" && pSChoice==="rock"|| cSChoice==="rock" && pSChoice==="scissor"){
+        computerScore++;
+        result="the Computer won this Round";
     }
     else {
-        return "paper";
+        playerScore++;
+        result="You have Won this Round , Amazing";
     }
-}
-// doing one round of the game and register,show the winner//
-function Playround(player1=playerSelection,player2=computerPlay()) {
-    if (player1 == "rock" && player2 == "scissor" || player1 == "scissor" && player2 == "paper" || player1=="paper" && player2=="rock") {
-        playerwins++;
-        return "Congratulation You Win this round "+player1+" beats "+player2;
-        
-    } else if (player1 == player2) {
-        return "Its a Tie you both choosed " + player1;
-    }
-    else {
-        computerwins++;
-        return " OMG! the AI is already taking over the World , " +player2 + " beats "+player1+" try harder next round";
-        
-    }
-}
-//make from the game a total of 5 rounds.//
-function game() {
-    playerwins=computerwins=0;//initialize playerswinnableround every new game.//
-    for(i=1;i<=5;i++){
-        playerSelection=(prompt('Rounds left '+(5-i),'Enter your choice,rock,scissor or paper')).toLowerCase();
-        //test if playerSelection is right//
-        if(playerSelection == "scissor" || playerSelection ==  "rock" || playerSelection == "paper") {
-            console.log(Playround(playerSelection,computerPlay()));
+    round++;
+    if(round==5){
+        if(computerScore>playerScore){
+            finalResult= result + " and it is the Final, sadly the Computer won with "+computerScore +" & Your Score is "+playerScore;
         }
-        else { 
-            console.log("the choice you inputed is not (rock,paper or scissor) please retry")
-            i--;
+        else if(playerScore>computerScore){
+            finalResult= result + " and it is the Final, and Damn you destroyed the computer with "+playerScore +" & and Computer score is "+computerScore;
+        }
+        else { finalResult= result + "and it is the Final, ouff! its a tie. Your Score is "+ playerScore + " & Computer Score is " + computerScore;
         }
     }
-    if(playerwins>computerwins){
-        return "You have won it looks as if Humans still have hope against AI\n Computer "+computerwins+" points , You "+playerwins+" points." 
-    }
-    else if (playerwins<computerwins ) {
-    return " You have lost, the AI took over Humanity. Computer " +computerwins+" points, You "+playerwins+" points."
-    }
-    else { return " Ouff! that was close, Its a Tie! \n Computer "+computerwins+" points, You "+ playerwins+" points"}
+     
 }
+function updateScreen(e){
+    const roundNumber=document.querySelector('#roundNumber');
+    roundNumber.textContent=round;
+    const pScore=document.querySelector('#playerScore');
+    pScore.textContent=playerScore;
+    const cScore=document.querySelector('#computerScore');
+    cScore.textContent=computerScore;
+    const fBack=document.querySelector('#feedbacktext');
+    fBack.textContent=(round==5)?finalResult:result;
+    /**showing the chosen rps by player */
+    const playerChoiceImg=document.querySelector('#pChoiceimg');
+    if(e.target.id=="rock"){playerChoiceImg.src="./images/Rock.png";}
+    else if(e.target.id=="scissor"){playerChoiceImg.src="./images/Scissor.png";}
+    else if(e.target.id=="paper"){playerChoiceImg.src="./images/images.png";}
+    /**showing the chosen rps by computer */
+    const computerChoiceImg= document.querySelector('#cChoiceimg');
+    if(cSChoice=="rock"){computerChoiceImg.src="./images/Rock.png";}
+    else if(cSChoice=="scissor"){computerChoiceImg.src="./images/Scissor.png";}
+    else if(cSChoice=="paper"){computerChoiceImg.src="./images/images.png";}
+    
+}
+
+
+
 

@@ -1,7 +1,16 @@
 /*getting info about what did player choose */
 let choices=document.querySelectorAll('.choice');
+const computerChoiceImg= document.querySelector('#cChoiceimg');
+const playerChoiceImg=document.querySelector('#pChoiceimg');
 choices.forEach((choice)=>{
-    choice.addEventListener('click',(e)=>{game(e);updateScreen(e)})
+    choice.addEventListener('click',(e)=>{
+        e.target.classList.add('popup');
+
+        e.target.addEventListener('transitionend',(e)=>{e.target.classList.remove('popup')});
+
+        
+        game(e);updateScreen(e)})
+
                             })
 let pSChoice="";
 let cSChoice="";
@@ -10,6 +19,7 @@ let computerScore=0;
 let round=0;
 let result="";
 let finalResult="";
+let winner=loser="";
 function initialisation(){
     computerScore=0;
     playerScore=0;
@@ -27,14 +37,20 @@ function game(e){
     if(round==5){initialisation()}
     pSChoice=e.target.id;
     cSChoice=computerChoice();
-    if(cSChoice===pSChoice){ result="It is a tie , ouff!!"}
+    if(cSChoice===pSChoice){ result="It is a tie , ouff!!";
+                            winner=loser="";
+                            }
     else if(cSChoice==="scissor" && pSChoice==="paper"|| cSChoice==="paper" && pSChoice==="rock"|| cSChoice==="rock" && pSChoice==="scissor"){
         computerScore++;
         result="the Computer won this Round";
+        winner="computer";
+        loser="player"
     }
     else {
         playerScore++;
         result="You have Won this Round , Amazing";
+        winner="player";
+        loser="computer"
     }
     round++;
     if(round==5){
@@ -59,16 +75,36 @@ function updateScreen(e){
     const fBack=document.querySelector('#feedbacktext');
     fBack.textContent=(round==5)?finalResult:result;
     /**showing the chosen rps by player */
-    const playerChoiceImg=document.querySelector('#pChoiceimg');
+    
     if(e.target.id=="rock"){playerChoiceImg.src="./images/Rock.png";}
     else if(e.target.id=="scissor"){playerChoiceImg.src="./images/Scissor.png";}
     else if(e.target.id=="paper"){playerChoiceImg.src="./images/images.png";}
+    if(winner=="player" && loser=="computer"){
+        computerChoiceImg.classList.remove('winner');
+        computerChoiceImg.classList.add('loser');
+        playerChoiceImg.classList.remove('loser')
+        playerChoiceImg.classList.add('winner');
+        
+                        }
+    
     /**showing the chosen rps by computer */
-    const computerChoiceImg= document.querySelector('#cChoiceimg');
+    
     if(cSChoice=="rock"){computerChoiceImg.src="./images/Rock.png";}
     else if(cSChoice=="scissor"){computerChoiceImg.src="./images/Scissor.png";}
     else if(cSChoice=="paper"){computerChoiceImg.src="./images/images.png";}
-    
+    if(winner=="computer" && loser=="player"){
+        playerChoiceImg.classList.remove('winner');
+        computerChoiceImg.classList.remove('loser');
+        computerChoiceImg.classList.add('winner');
+        playerChoiceImg.classList.add('loser');
+                                            }
+
+    if(winner=="" && loser==""){
+        playerChoiceImg.classList.remove('winner');
+        playerChoiceImg.classList.remove('loser');
+        computerChoiceImg.classList.remove('winner');
+        computerChoiceImg.classList.remove('loser');
+    }
 }
 
 
